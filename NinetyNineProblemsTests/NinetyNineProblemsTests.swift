@@ -10,27 +10,40 @@ import XCTest
 @testable import NinetyNineProblems
 
 class NinetyNineProblemsTests: XCTestCase {
+    let list:List! = List(1, 1, 2, 3, 5, 8)
+
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testP01() {
+        let last = list.last
+        XCTAssertTrue(last == 8, "Last value not 8")
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testP02() {
+        let pennultimate = list.pennultimate
+        XCTAssertTrue(pennultimate == 5, "pennultimate value not 5")
     }
     
+    func testP03() {
+        let kthElement = list[2]
+        XCTAssertTrue(kthElement == 2, "kthElement value not 2")
+    }
+    
+    func testP04() {
+        let length = list.length
+        XCTAssertTrue(length == 6, "Length value not 6 but \(length)")
+    }
+    
+    func testP05() {
+        let reversedList:List! = list.reversed()
+        XCTAssertTrue(reversedList.value == 8, "First value not 8")
+        XCTAssertTrue(reversedList.last == 1, "Last value not 1")
+    }
 }

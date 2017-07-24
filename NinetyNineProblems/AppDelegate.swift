@@ -44,3 +44,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+extension CustomStringConvertible {
+    var description : String {
+        var description: String = ""
+        if self is AnyObject {
+            description = "***** \(type(of: self)) - <\(Unmanaged<AnyObject>.passUnretained(self as AnyObject).toOpaque())>***** \n"
+        } else {
+            description = "***** \(type(of: self)) *****\n"
+        }
+        let selfMirror = Mirror(reflecting: self)
+        for child in selfMirror.children {
+            if let propertyName = child.label {
+                description += "\(propertyName): \(child.value)\n"
+            }
+        }
+        return description
+    }
+}

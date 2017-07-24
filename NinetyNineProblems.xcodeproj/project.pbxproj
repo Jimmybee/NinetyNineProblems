@@ -13,6 +13,7 @@
 		66D227171F262E3A00FF3475 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66D227161F262E3A00FF3475 /* Assets.xcassets */; };
 		66D2271A1F262E3A00FF3475 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D227181F262E3A00FF3475 /* LaunchScreen.storyboard */; };
 		66D227251F262E3A00FF3475 /* NinetyNineProblemsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D227241F262E3A00FF3475 /* NinetyNineProblemsTests.swift */; };
+		66D227301F262E6D00FF3475 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D2272F1F262E6D00FF3475 /* List.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		66D227201F262E3A00FF3475 /* NinetyNineProblemsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NinetyNineProblemsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66D227241F262E3A00FF3475 /* NinetyNineProblemsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NinetyNineProblemsTests.swift; sourceTree = "<group>"; };
 		66D227261F262E3A00FF3475 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66D2272F1F262E6D00FF3475 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = List.swift; path = ../List.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				66D2270F1F262E3A00FF3475 /* AppDelegate.swift */,
+				66D2272F1F262E6D00FF3475 /* List.swift */,
 				66D227111F262E3A00FF3475 /* ViewController.swift */,
 				66D227131F262E3A00FF3475 /* Main.storyboard */,
 				66D227161F262E3A00FF3475 /* Assets.xcassets */,
@@ -203,6 +206,7 @@
 			files = (
 				66D227121F262E3A00FF3475 /* ViewController.swift in Sources */,
 				66D227101F262E3A00FF3475 /* AppDelegate.swift in Sources */,
+				66D227301F262E6D00FF3475 /* List.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
