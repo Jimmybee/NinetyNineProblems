@@ -82,4 +82,70 @@ extension List {
     }
 }
 
+// P06
+extension List where T:Equatable {
+    func isPalindrome() -> Bool {
+        let subscriptLength = self.length - 1
+        return checkPair(head: self, length: subscriptLength, valid: true)
+    }
+    
+    func checkPair(head: List<T>?, length: Int, valid: Bool) -> Bool {
+        if head?[length] == nil {
+            return valid
+        } else {
+            return checkPair(head: head?.next, length: length - 2, valid: valid) && head!.value ==  head![length]! && valid
+        }
+    }
+}
+
+
+// P07
+
+extension List {
+    
+    func flatten() -> List {
+         _ = self.recursiveFlatten()
+         return self
+    }
+    
+    private func recursiveFlatten() -> List<T>? {
+        if let subList = value as? List<T> {
+            let lastItemInSublist = subList.recursiveFlatten()
+            self.value = subList[0]
+            lastItemInSublist?.next = self.next
+            next = subList.next
+        }
+        
+        if next != nil {
+            return next!.recursiveFlatten()
+        } else {
+            return self
+        }
+    }
+    
+}
+
+extension List where T: Equatable {
+    func compress() {
+        next = removedDuplicate(value)
+        next?.compress()
+    }
+    
+    private func removedDuplicate(_ ofValue: T) -> List<T>? {
+        if value == ofValue {
+            return next?.removedDuplicate(ofValue)
+        } else {
+            return self
+        }
+    }
+}
+
+extension List where T: Equatable {
+    func pack() -> List<List<T>> {
+
+    }
+}
+
+
+
 

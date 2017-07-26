@@ -46,4 +46,37 @@ class NinetyNineProblemsTests: XCTestCase {
         XCTAssertTrue(reversedList.value == 8, "First value not 8")
         XCTAssertTrue(reversedList.last == 1, "Last value not 1")
     }
+    
+    func testP06() {
+        let palidromeList:List! = List(1, 2, 3, 2, 1)
+        XCTAssertTrue(palidromeList.isPalindrome(), "List is a palidrome")
+        XCTAssertFalse(list.isPalindrome(), "List is not a palidrome")
+
+    }
+    
+    func testP07() {
+        let listOfList:List! = List<Any>(List<Any>(1, 1), 2, List<Any>(3, List<Any>(5, 8)))
+        let flat = listOfList.flatten()
+        let element0 = flat[0] as? Int
+        let element3 = flat[3] as? Int
+        let element5 = flat[5] as? Int
+        XCTAssertTrue(element0 == 1, "Flatted list 0th element should equal 1")
+        XCTAssertTrue(element3 == 3, "Flatted list 3rd element should equal 3")
+        XCTAssertTrue(element5 == 8, "Flatted list 5th element should equal 8")
+
+    }
+    
+    func testP08() {
+        let list:List! = List("a", "a", "a", "a", "b", "c", "c", "a", "a", "d", "e", "e", "e", "e")
+        let intendedCompression:List! = List("a", "b", "c", "a", "d", "e")
+        list.compress()
+        listsMatch(list1: list, list2: intendedCompression)
+    }
+    
+    func listsMatch<T>(list1: List<T>, list2: List<T>) where T: Equatable{
+        XCTAssertTrue(list1.length == list2.length)
+        for index in 0...(list1.length - 1) {
+            XCTAssertTrue(list1[index]! == list2[index]!, "Lists don't match")
+        }
+    }
 }
