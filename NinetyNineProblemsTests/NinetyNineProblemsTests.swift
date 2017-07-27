@@ -73,6 +73,19 @@ class NinetyNineProblemsTests: XCTestCase {
         listsMatch(list1: list, list2: intendedCompression)
     }
     
+    func testP09() {
+        let list:List! = List("a", "a", "a", "a", "b", "c", "c", "a", "a", "d", "e", "e", "e", "e")
+        let expectedResult:List! = List(List("a", "a", "a", "a"), List("b"), List("c", "c"), List("a", "a"), List("d"), List("e", "e", "e", "e"))
+        let packededList = list.pack()
+        XCTAssertEqual(expectedResult.length, packededList.length)
+        XCTAssertEqual(expectedResult[0]!?.length, packededList[0]?.length)
+        XCTAssertEqual(expectedResult[1]!?.length, packededList[1]?.length)
+        XCTAssertEqual(expectedResult[1]!?.last, packededList[1]?.last)
+        XCTAssertEqual(expectedResult.last!?.length, packededList.last?.length)
+        XCTAssertEqual(expectedResult.last!?.last, packededList.last?.last)
+
+    }
+    
     func listsMatch<T>(list1: List<T>, list2: List<T>) where T: Equatable{
         XCTAssertTrue(list1.length == list2.length)
         for index in 0...(list1.length - 1) {

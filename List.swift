@@ -24,6 +24,10 @@ class List<T>: CustomStringConvertible {
         value = nextValues.removeFirst()
         next = List(nextValues)
     }
+    
+    init() {
+        
+    }
 }
 
 // P01
@@ -125,6 +129,7 @@ extension List {
     
 }
 
+// P08
 extension List where T: Equatable {
     func compress() {
         next = removedDuplicate(value)
@@ -140,9 +145,32 @@ extension List where T: Equatable {
     }
 }
 
+// P09
 extension List where T: Equatable {
     func pack() -> List<List<T>> {
-
+        let duplicates = repeatedCountAndLast(value, count: 0)
+        let count = duplicates.0
+        let sublistLast = duplicates.1
+        let array = Array(repeating: value!, count: count)
+        let valueList: List<T>? = List.init(array)
+        
+        let list = List<List<T>>()
+        list.value = valueList
+        let nextPacked = sublistLast?.pack()
+        list.next = nextPacked
+        return list
+    }
+    
+    private func repeatedCountAndLast(_ ofValue: T, count: Int) -> (Int, List<T>?) {
+        if value == ofValue {
+            if next != nil {
+                return next!.repeatedCountAndLast(ofValue, count: count + 1)
+            } else {
+                return (count + 1, nil)
+            }
+        } else {
+            return (count, self)
+        }
     }
 }
 
