@@ -86,6 +86,14 @@ class NinetyNineProblemsTests: XCTestCase {
 
     }
     
+    func testP10() {
+        let list:List! = List("a", "a", "a", "a", "b", "c", "c", "a", "a", "d", "e", "e", "e", "e")
+        let expectedResult:List! = List((4, "a"), (1, "b"), (2, "c"), (2, "a"), (1, "d"), (4, "e"))
+        let encodedList = list.encode()
+        print(encodedList)
+        XCTAssertEqual(expectedResult.length, encodedList.length)
+    }
+    
     func listsMatch<T>(list1: List<T>, list2: List<T>) where T: Equatable{
         XCTAssertTrue(list1.length == list2.length)
         for index in 0...(list1.length - 1) {

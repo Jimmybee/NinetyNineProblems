@@ -174,6 +174,15 @@ extension List where T: Equatable {
     }
 }
 
-
+extension List where T: Equatable {
+    func encode() -> List<(Int, T)> {
+        let packed = self.pack()
+        let count = packed.value.length
+        let list = List<(Int, T)>()
+        list.value = (count, self.value)
+        list.next = packed.next?.value.encode()
+        return list
+    }
+}
 
 
